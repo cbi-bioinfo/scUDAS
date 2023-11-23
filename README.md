@@ -11,5 +11,30 @@ scUDAS is a cell type prediction model for scRNA-seq utilizing unsupervised doma
 ## Usage
 Clone the repository or download source code files.
 
+1. Edit **"run_scUDAS.sh"** file having dataset files for source and target. Modify each variable values in the bash file with filename for your own dataset. Each file should contain the header and follow the format described as follows :
+
+- ```source_X, target_X``` : File with a matrix or a data frame containing gene expression, where each row and column represent **sample** and **feature**, respectively. Example for dataset format is provided below.
+
+```
+PTPN2,GTF2A2,...,HN1L,ATHL1
+2.1100,0.0,...,0.0,3.7135
+...
+```
+
+- ```source_Y, target_Y``` : File with a matrix or a data frame contatining cell-type for each sample, where each row represent **sample**. Cell-type names used for source and target should be included and users should label each cell-type as 1 and 0 for others in the same order in source dataset to be matched. Example for data format is described below.
+
+```
+B cell,CD14+ monocyte,CD4+ T cell,Cytotoxic T cell,Dendritic cell,Megakaryocyte,Plasmacytoid dendritic cell
+0,0,0,1,0,0,0
+0,0,0,1,0,0,0
+0,1,0,0,0,0,0
+0,0,1,0,0,0,0
+...
+```
+
+2. Use **"run_scUDAS.sh"** to predict cell tyeps subtypes for single-cell RNA sequencing.
+
+3. You will get an output **"prediction.csv"** with predicted cell types for target dataset.
+
 ## Contact
 If you have any question or problem, please send an email to **pcr0827@sookmyung.ac.kr**
